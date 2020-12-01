@@ -21,7 +21,7 @@ public class Day1 {
 
         for (int j = 0; j < integers.size(); j++){
             if (integers.contains(sum-integers.get(j))){
-                int expenseReport = integers.get(j) * (2020-integers.get(j));
+                int expenseReport = integers.get(j) * (sum-integers.get(j));
                 System.out.println(expenseReport);
                 break;
             }
