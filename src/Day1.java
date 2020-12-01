@@ -20,15 +20,16 @@ public class Day1 {
                 integers.add(sc.nextInt());
         }
 
-        //check if the list contains two elements that adds up to the sum
+        //check if the list contains three elements that adds up to the sum
         for (int j = 0; j < integers.size(); j++){
-            if (integers.contains(sum-integers.get(j))){
-                int expenseReport = integers.get(j) * (sum-integers.get(j));
-                System.out.println(expenseReport);
-                break;
+            for (int i = 0; i < j; i++) {
+                if (integers.contains(sum - integers.get(j) - integers.get(i))) {
+                    int expenseReport = integers.get(j) * integers.get(i) * (sum - integers.get(j) - integers.get(i));
+                    System.out.println(expenseReport);
+                    break;
+                }
             }
         }
 
     }
 }
-
