@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Day1 {
     public static void main(String[] args) throws FileNotFoundException {
         //get the input from file
-        File file = new File("C:\\Users\\Pixie Waffle\\Desktop\\adventofcode2020\\adventofcode2020\\textfiles\\day1-input.txt");
+        File file = new File("C:\\Users\\Pixie Waffle\\Desktop\\adventofcode2020\\adventofcode2020\\textfiles\\day1.txt");
         Scanner sc = new Scanner(file);
 
         int sum = 2020;
