@@ -34,7 +34,7 @@ public class Day2 {
     public static boolean isValidPassword(String testPW, char letter, int minReq, int maxReq) {
         int amountOfSameLetter = 0;
         boolean validPosition = false;
-        //if the position of a letter wrong return false
+        //iff exactly one letter exists in the minReq and maxReq positions
         if(testPW.charAt(minReq-1) == letter && testPW.charAt(maxReq-1) != letter
                 || testPW.charAt(minReq-1) != letter && testPW.charAt(maxReq-1) == letter){
             validPosition = true;
