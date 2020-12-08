@@ -35,53 +35,9 @@ public class Day4 {
             for (int j = 0; j < passportsWithKeyValue.get(i).size(); j++){
                 String key = passportsWithKeyValue.get(i).get(j).getKey();
                 String val = passportsWithKeyValue.get(i).get(j).getValue();
-
-                //Check Birth Year/Issue Year/Expiration Year
-                if(isCorrectYear(key, val))
+                //Check if the Field is Valid
+                if(isCorrectField(key, val))
                     correctFields++;
-
-                //Check Height
-                if(key.equals("hgt")){
-                    String cmOrIn = val.substring(val.length()-2);
-                    int height = 0;
-                    if(val.length() > 2)
-                        height = Integer.parseInt(val.substring(0, val.length()-2));
-                    if (cmOrIn.equals("cm")){
-                        if(height >= 150 && height <= 193) correctFields++;
-                    }
-                    if (cmOrIn.equals("in")){
-                        if(height >= 59 && height <= 76) correctFields++;
-                    }
-                }
-
-                //Check Hair Color
-                if(key.equals("hcl")){
-                    String hashTag = val.substring(0, 1);
-                    String hairColor = val.substring(1);
-                    if (hashTag.equals("#") && hairColor.length() == 6) {
-                        correctFields++;
-                    }
-                }
-
-                //Check Eye Color
-                if(key.equals("ecl")){
-                    if (val.equals("amb") || val.equals("blu") || val.equals("brn") ||
-                            val.equals("gry") || val.equals("grn") || val.equals("hzl") ||
-                            val.equals("oth"))
-                    {
-                        correctFields++;
-                    }
-                }
-
-                //Check Passport ID
-                if(key.equals("pid")){
-                    if(val.length() == 9) {
-                        int pid = Integer.parseInt(val);
-                        if (pid > 0){
-                            correctFields++;
-                        }
-                    }
-                }
             }
             if(correctFields >= 7){
                 validPassports++;
@@ -90,6 +46,42 @@ public class Day4 {
         System.out.println(validPassports);
     }
 
+    private static boolean isCorrectField(String key, String val){
+        //Check Height
+        if(key.equals("hgt")){
+            String cmOrIn = val.substring(val.length()-2);
+            int height = 0;
+            if(val.length() > 2)
+                height = Integer.parseInt(val.substring(0, val.length()-2));
+            if (cmOrIn.equals("cm")){
+                return height >= 150 && height <= 193;
+            }
+            if (cmOrIn.equals("in")){
+                return height >= 59 && height <= 76;
+            }
+        }
+
+        //Check Hair Color
+        if(key.equals("hcl")){
+            String hashTag = val.substring(0, 1);
+            String hairColor = val.substring(1);
+            return hashTag.equals("#") && hairColor.length() == 6;
+        }
+
+        //Check Eye Color
+        if(key.equals("ecl")){
+            return val.equals("amb") || val.equals("blu") || val.equals("brn") ||
+                    val.equals("gry") || val.equals("grn") || val.equals("hzl") ||
+                    val.equals("oth");
+        }
+
+        //Check Passport ID
+        if(key.equals("pid")){
+            return val.length() == 9 && Integer.parseInt(val) > 0;
+        }
+        //Check Birth Year/Issue Year/Expiration Year
+        return isCorrectYear(key, val);
+    }
     private static boolean isCorrectYear(String key, String value){
         //Check Birth Year
         if (key.equals("byr")){
