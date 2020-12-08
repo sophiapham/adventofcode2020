@@ -35,13 +35,10 @@ public class Day4 {
             for (int j = 0; j < passportsWithKeyValue.get(i).size(); j++){
                 String key = passportsWithKeyValue.get(i).get(j).getKey();
                 String val = passportsWithKeyValue.get(i).get(j).getValue();
-                //Check is not Null or Empty Value
-                if (isNotNullOrEmpty(val)){
-                    //Check Birth Year/Issue Year/Expiration Year
-                    if(isCorrectYear(key, val))
-                        correctFields++;
 
-                    }
+                //Check Birth Year/Issue Year/Expiration Year
+                if(isCorrectYear(key, val))
+                    correctFields++;
 
                 //Check Height
                 if(key.equals("hgt")){
@@ -110,10 +107,6 @@ public class Day4 {
             return eyrValue >= 2020 && eyrValue <= 2030;
         }
         return false;
-    }
-
-    private static boolean isNotNullOrEmpty(String str){
-        return (str != null && !"".equals(str));
     }
 
     static class CustomPair{
